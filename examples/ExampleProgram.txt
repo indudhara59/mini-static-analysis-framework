@@ -1,0 +1,31 @@
+Sample program analyzed by ExampleCFGFactory
+============================================
+
+The Java code builds this control flow graph manually:
+
+B1:
+  x = 1
+  y = 2
+
+B2:
+  z = x + y
+
+B3:
+  x = z + 1
+
+B4:
+  y = z + 2
+
+B5:
+  result = x + y
+
+Edges:
+  B1 -> B2
+  B2 -> B3
+  B2 -> B4
+  B3 -> B5
+  B4 -> B5
+
+This shape creates a small branch before B5. It lets Reaching Definitions
+show that different definitions can reach the same join block, and it lets
+Live Variable Analysis show which variables are needed before each block.
